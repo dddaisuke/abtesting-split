@@ -1,5 +1,13 @@
 AbtestingSplit::Application.routes.draw do
   mount Split::Dashboard, :at => 'split'
+  resources :abtest, only: :index do
+    collection do
+      get :click
+    end
+  end
+
+  root :to => 'abtest#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
